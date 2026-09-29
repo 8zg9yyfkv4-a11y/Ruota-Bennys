@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#050914" />
+  <title>ARMERIA PALETO Command Center</title>
+  <meta name="description" content="Los Santos Custom • Command Center" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-blue"></div>
+  <div class="ambient ambient-gold"></div>
+  <div class="noise"></div>
+
+  <section id="login-screen" class="login-screen hidden">
+    <div class="login-shell glass">
+      <div class="login-brand">
+        <div class="brand-emblem">ARMERIA PALETO</div>
+        <div>
+          <span class="eyebrow">LOS SANTOS CUSTOM</span>
+          <h1>Command Center</h1>
+          <p>Accesso protetto tramite identità e ruoli Discord.</p>
+        </div>
+      </div>
+      <div class="login-status" id="login-status"></div>
+      <a class="discord-login" href="/api/auth/login">
+        <span class="discord-icon">◈</span>
+        <span><b>Accedi con Discord</b><small>Ruoli e permessi vengono sincronizzati automaticamente</small></span>
+        <span class="arrow">→</span>
+      </a>
+      <div id="demo-box" class="demo-box hidden">
+        <div class="demo-head"><span>DEMO ACCESS</span><small>Prova la UI con permessi differenti</small></div>
+        <div class="demo-grid" id="demo-grid"></div>
+      </div>
+      <div class="login-foot"><span class="status-dot"></span> Secure session • RBAC • Audit enabled</div>
+    </div>
+  </section>
+
+  <div id="app" class="app hidden">
+    <aside id="sidebar" class="sidebar glass">
+      <div class="side-brand">
+        <div class="brand-emblem small">ARMERIA PALETO</div>
+        <div><strong>LOS SANTOS</strong><span>COMMAND CENTER</span></div>
+      </div>
+      <nav id="nav" class="nav"></nav>
+      <div class="sidebar-bottom">
+        <div class="system-pill"><span class="status-dot"></span><div><strong>ARMERIA PALETO SYSTEM</strong><small id="bridge-label">ONLINE</small></div></div>
+        <button id="logout-btn" class="ghost-btn">Esci</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar glass">
+        <button id="mobile-menu" class="icon-btn mobile-only" aria-label="Menu">☰</button>
+        <div class="crumb"><span>ARMERIA PALETO</span><b id="page-title">COMMAND CENTER</b></div>
+        <div class="top-actions">
+          <div class="live-chip"><span class="status-dot"></span><span>OFFICINA LIVE</span></div>
+          <button class="icon-btn" id="notifications" aria-label="Notifiche">◌<i class="notif-badge">3</i></button>
+          <button id="profile-btn" class="profile-chip">
+            <span class="avatar" id="top-avatar">A</span>
+            <span><b id="top-name">Alex</b><small id="top-role">Proprietario</small></span>
+            <span class="chev">⌄</span>
+          </button>
+        </div>
+      </header>
+
+      <div id="content" class="content"></div>
+    </main>
+
+    <nav id="mobile-nav" class="mobile-nav glass"></nav>
+  </div>
+
+  <div id="toast-stack" class="toast-stack"></div>
+  <div id="drawer-backdrop" class="drawer-backdrop hidden"></div>
+
+  <script src="/assets/app.js" defer></script>
+
+</body>
+</html>

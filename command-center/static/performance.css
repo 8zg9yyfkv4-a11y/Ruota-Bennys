@@ -1,0 +1,81 @@
+/* ARMERIA PALETO Command Center — performance layer */
+
+/* Keep the premium look, reduce continuous GPU compositing. */
+.glass{
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.ambient{
+  filter:blur(64px);
+  opacity:.27;
+  animation-duration:22s;
+}
+.card{
+  contain:paint;
+}
+
+/* Phones, tablets and touch devices: visual quality stays high but expensive
+   continuously-rendered effects are replaced by static equivalents. */
+html.perf-lite .glass{
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  background:linear-gradient(150deg,rgba(9,17,34,.96),rgba(4,9,19,.95))!important;
+}
+html.perf-lite .ambient{
+  animation:none!important;
+  filter:blur(48px)!important;
+  opacity:.20!important;
+}
+html.perf-lite .noise,
+html.perf-lite #cursor-glow{
+  display:none!important;
+}
+html.perf-lite .card:after{
+  display:none!important;
+}
+html.perf-lite .status-dot{
+  animation:none!important;
+}
+html.perf-lite .content{
+  animation:none!important;
+}
+html.perf-lite .card,
+html.perf-lite .topbar,
+html.perf-lite .sidebar,
+html.perf-lite .mobile-nav{
+  box-shadow:inset 0 1px rgba(255,255,255,.025),0 10px 28px rgba(0,0,0,.20)!important;
+}
+html.perf-lite .boot{
+  transition:opacity .18s ease,visibility .18s ease!important;
+}
+html.perf-lite .boot-line i{
+  animation-duration:.45s!important;
+}
+html.perf-lite .discord-login,
+html.perf-lite .nav-item,
+html.perf-lite .btn,
+html.perf-lite .card:after{
+  transition-duration:.12s!important;
+}
+
+@media (max-width:900px), (pointer:coarse){
+  .glass{
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    background:linear-gradient(150deg,rgba(9,17,34,.96),rgba(4,9,19,.95))!important;
+  }
+  .ambient{animation:none!important;filter:blur(48px)!important;opacity:.20!important}
+  .noise,#cursor-glow{display:none!important}
+  .card:after{display:none!important}
+  .status-dot{animation:none!important}
+  .content{animation:none!important}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    scroll-behavior:auto!important;
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+}
