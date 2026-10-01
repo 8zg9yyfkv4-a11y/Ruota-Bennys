@@ -1,4 +1,4 @@
-# ARMERIA PALETO Gestionale unificato
+# BENNY'S Gestionale unificato
 
 Il gestionale ospita la ruota in `/ruota/` e la console operatori in `/ruota/admin`. Il sito legge gli archivi originali del bot tramite il modulo autenticato `CommandCenterData.py`: non importa una copia locale e non crea una seconda contabilità.
 

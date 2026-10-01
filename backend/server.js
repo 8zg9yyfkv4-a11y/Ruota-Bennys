@@ -107,7 +107,7 @@ const wheels = {
       { id: 'cash-250000', label: '$250.000', emoji: '💵', probability: 32 },
       { id: 'kit-150', label: '150 Kit Riparazione', emoji: '🧰', probability: 27 },
       { id: 'ammo-9mm-1000', label: '1.000 Munizioni 9mm', emoji: '📦', probability: 22 },
-      { id: 'lsc-experience', label: 'FULL ARMERIA PALETO EXPERIENCE', emoji: '👑', probability: 18.4 },
+      { id: 'lsc-experience', label: "FULL BENNY'S EXPERIENCE", emoji: '👑', probability: 18.4 },
       { id: 'pistol-1000-ammo', label: 'Pistola 9mm + 1.000 Munizioni', emoji: '🔫', probability: 0.5 },
       { id: 'auto-1600k-2000k', label: 'Auto fascia $1.600.000 - $2.000.000', emoji: '🏆', probability: 0.1 },
     ],
@@ -232,7 +232,7 @@ async function sendSaleLog(sales, actor) {
   const total = sales.reduce((sum, sale) => sum + sale.amount, 0)
   const codes = sales.map((sale) => `\`${sale.code}\``).join(' • ')
   return sendWebhook(DISCORD_SALES_WEBHOOK_URL, {
-    username: 'ARMERIA PALETO • Log Fatture',
+    username: "BENNY'S • Log Fatture",
     embeds: [{
       title: '🧾 Nuova vendita Ruota della Fortuna', color: 0x1687ff,
       fields: [
@@ -242,7 +242,7 @@ async function sendSaleLog(sales, actor) {
         { name: sales.length > 1 ? 'Codici emessi' : 'Codice emesso', value: codes },
       ],
       timestamp: sales[0].createdAt,
-      footer: { text: 'ARMERIA PALETO • Vendita registrata nel database' },
+      footer: { text: "BENNY'S • Vendita registrata nel database" },
     }],
   })
 }
@@ -250,7 +250,7 @@ async function sendSaleLog(sales, actor) {
 async function sendSaleCancellationLog(sale, actor) {
   const wasUsed = sale.previousStatus === 'used'
   return sendWebhook(DISCORD_SALES_WEBHOOK_URL, {
-    username: 'ARMERIA PALETO • Log Fatture',
+    username: "BENNY'S • Log Fatture",
     embeds: [{
       title: wasUsed ? '↩️ Giro stornato dal fatturato' : '⛔ Vendita annullata', color: 0xe5484d,
       fields: [
@@ -261,7 +261,7 @@ async function sendSaleCancellationLog(sale, actor) {
         { name: 'Motivo', value: sale.cancelReason || 'Non specificato' },
       ],
       timestamp: sale.cancelledAt,
-      footer: { text: 'ARMERIA PALETO • Importo escluso da fatturato e statistiche' },
+      footer: { text: "BENNY'S • Importo escluso da fatturato e statistiche" },
     }],
   })
 }
@@ -269,7 +269,7 @@ async function sendSaleCancellationLog(sale, actor) {
 async function sendSpinCancellationLog(sale, actor) {
   if (sale.previousStatus !== 'used') return null
   return sendWebhook(DISCORD_SPIN_WEBHOOK_URL, {
-    username: 'ARMERIA PALETO • Log Ruota',
+    username: "BENNY'S • Log Ruota",
     embeds: [{
       title: '↩️ Risultato della ruota annullato', color: 0xe5484d,
       fields: [
@@ -281,14 +281,14 @@ async function sendSpinCancellationLog(sale, actor) {
         { name: 'Motivo', value: sale.cancelReason || 'Non specificato' },
       ],
       timestamp: sale.cancelledAt,
-      footer: { text: 'ARMERIA PALETO • Il risultato originale resta nel database per audit' },
+      footer: { text: "BENNY'S • Il risultato originale resta nel database per audit" },
     }],
   })
 }
 
 async function sendSpinLog({ sale, gameId, prize, spunAt }) {
   return sendWebhook(DISCORD_SPIN_WEBHOOK_URL, {
-    username: 'ARMERIA PALETO • Log Ruota',
+    username: "BENNY'S • Log Ruota",
     embeds: [{
       title: '🎡 Nuovo giro della ruota', color: 0x20b7ff,
       fields: [
@@ -299,7 +299,7 @@ async function sendSpinLog({ sale, gameId, prize, spunAt }) {
         { name: 'Venduto da', value: `${sale.operatorName}\n<@${sale.operatorId}>`, inline: false },
       ],
       timestamp: spunAt,
-      footer: { text: 'ARMERIA PALETO • Risultato salvato nel database' },
+      footer: { text: "BENNY'S • Risultato salvato nel database" },
     }],
   })
 }
@@ -347,7 +347,7 @@ app.get('/api/status', async (req, res) => {
     const database = await store.getHealth()
     res.json({
       success: true,
-      message: 'ARMERIA PALETO Ruota della Fortuna online',
+      message: "BENNY'S Ruota della Fortuna online",
       database,
       discord: {
         oauthConfigured: Boolean(DISCORD_CLIENT_ID && DISCORD_CLIENT_SECRET),
@@ -759,7 +759,7 @@ async function startServer() {
   const database = await store.initializeStore()
   await catalog.initializeCatalog(wheels)
   return app.listen(PORT, () => {
-    console.log(`ARMERIA PALETO Ruota online sulla porta ${PORT}`)
+    console.log(`BENNY'S Ruota online sulla porta ${PORT}`)
     console.log(`Database: ${database.mode}`)
     console.log(`Discord OAuth: ${DISCORD_CLIENT_ID && DISCORD_CLIENT_SECRET ? 'configurato' : 'da configurare'}`)
     console.log(`Webhook fatture: ${DISCORD_SALES_WEBHOOK_URL ? 'configurato' : 'da configurare'}`)
