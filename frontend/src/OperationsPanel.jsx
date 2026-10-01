@@ -12,6 +12,16 @@ const dateTime = new Intl.DateTimeFormat('it-IT', {
   timeStyle: 'short',
 })
 
+function WheelMark() {
+  return (
+    <svg className="ops-wheel-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="2" />
+      <path d="M12 3v7m8 6-6-3m-8 3 6-3" />
+    </svg>
+  )
+}
+
 async function readJson(response) {
   const body = await response.text()
   if (!body) return {}
@@ -353,10 +363,10 @@ export default function OperationsPanel({ apiUrl }) {
           <span><strong>Benny's</strong><small>Pannello di controllo</small></span>
         </a>
         <nav>
-          <button className={tab === 'sale' ? 'active' : ''} onClick={() => setTab('sale')}><span>＋</span> Nuova vendita</button>
-          <button className={tab === 'sales' ? 'active' : ''} onClick={() => setTab('sales')}><span>▤</span> {isAdmin ? 'Tutte le vendite' : 'Le mie vendite'}</button>
+          <button className={tab === 'sale' ? 'active' : ''} onClick={() => setTab('sale')}><span>＋</span> Nuova Vendita</button>
+          <button className={tab === 'sales' ? 'active' : ''} onClick={() => setTab('sales')}><span>▤</span> {isAdmin ? 'Tutte Le Vendite' : 'Le Mie Vendite'}</button>
           {isAdmin && <button className={tab === 'dashboard' ? 'active' : ''} onClick={() => setTab('dashboard')}><span>⌁</span> Dashboard</button>}
-          {user?.canManageWheels && <button className={tab === 'wheels' ? 'active' : ''} onClick={() => setTab('wheels')}>Ruote e premi</button>}
+          {user?.canManageWheels && <button className={tab === 'wheels' ? 'active' : ''} onClick={() => setTab('wheels')}><WheelMark /> Ruote E Premi</button>}
           {isAdmin && <button className={tab === 'operators' ? 'active' : ''} onClick={() => setTab('operators')}><span>♙</span> Operatori</button>}
         </nav>
         <div className="ops-side-footer">
@@ -370,7 +380,7 @@ export default function OperationsPanel({ apiUrl }) {
           <button className="ops-mobile-brand" onClick={() => setTab('sale')}><img src="/bennys.png" alt="Benny's" /></button>
           <div>
             <span className="ops-eyebrow">BENNY'S</span>
-            <h1>{tab === 'sale' ? 'Nuova vendita' : tab === 'sales' ? 'Registro vendite' : tab === 'dashboard' ? 'Andamento attività' : tab === 'wheels' ? 'Ruote e premi' : 'Gestione operatori'}</h1>
+            <h1>{tab === 'sale' ? 'Nuova Vendita' : tab === 'sales' ? 'Registro Vendite' : tab === 'dashboard' ? 'Andamento Attività' : tab === 'wheels' ? 'Ruote E Premi' : 'Gestione Operatori'}</h1>
           </div>
           <div className="ops-account">
             {user.avatar ? <img src={user.avatar} alt="" /> : <span className="ops-avatar-fallback">{user.displayName?.slice(0, 1)}</span>}
@@ -380,10 +390,10 @@ export default function OperationsPanel({ apiUrl }) {
         </header>
 
         <nav className="ops-mobile-nav">
-          <button className={tab === 'sale' ? 'active' : ''} onClick={() => setTab('sale')}>Vendita</button>
-          <button className={tab === 'sales' ? 'active' : ''} onClick={() => setTab('sales')}>Registro</button>
+          <button className={tab === 'sale' ? 'active' : ''} onClick={() => setTab('sale')}>Nuova Vendita</button>
+          <button className={tab === 'sales' ? 'active' : ''} onClick={() => setTab('sales')}>{isAdmin ? 'Tutte Le Vendite' : 'Le Mie Vendite'}</button>
           {isAdmin && <button className={tab === 'dashboard' ? 'active' : ''} onClick={() => setTab('dashboard')}>Dashboard</button>}
-          {user?.canManageWheels && <button className={tab === 'wheels' ? 'active' : ''} onClick={() => setTab('wheels')}>Ruote e premi</button>}
+          {user?.canManageWheels && <button className={tab === 'wheels' ? 'active' : ''} onClick={() => setTab('wheels')}><WheelMark /> Ruote E Premi</button>}
           {isAdmin && <button className={tab === 'operators' ? 'active' : ''} onClick={() => setTab('operators')}>Operatori</button>}
         </nav>
 

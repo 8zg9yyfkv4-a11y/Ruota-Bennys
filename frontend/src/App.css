@@ -2768,6 +2768,7 @@ a:focus-visible {
 .ops-sidebar nav button:hover { color: #F7EDE0; background: rgba(172, 124, 56, .08); }
 .ops-sidebar nav button.active { border-color: rgba(215, 169, 104, .2); color: #fff; background: linear-gradient(90deg, rgba(199, 141, 59, .26), rgba(199, 141, 59, .05)); box-shadow: inset 3px 0 #CF984A; }
 .ops-sidebar nav button span { width: 21px; color: #DAAF72; font-size: 20px; text-align: center; }
+.ops-wheel-mark { width: 18px; height: 18px; flex: 0 0 18px; color: #DAAF72; vertical-align: -4px; }
 
 .ops-side-footer { display: grid; gap: 17px; margin-top: auto; padding: 20px 10px 0; border-top: 1px solid rgba(227, 195, 150,.1); }
 .ops-side-footer a { color: #AA987F; font-size: 11px; text-decoration: none; }
@@ -2979,7 +2980,8 @@ a:focus-visible {
   .ops-account > div { display: none; }
   .ops-account > button { margin-left: 0; }
   .ops-mobile-nav { display: flex; gap: 5px; margin: 12px 0 0; overflow-x: auto; }
-  .ops-mobile-nav button { flex: 1 0 auto; min-height: 38px; padding: 0 12px; border-radius: 10px; color: #A18D72; background: rgba(21, 17, 11,.72); font-size: 10px; }
+  .ops-mobile-nav button { flex: 1 0 auto; min-height: 38px; padding: 0 12px; border-radius: 10px; color: #A18D72; background: rgba(21, 17, 11,.72); font-size: 10px; white-space: nowrap; }
+  .ops-mobile-nav .ops-wheel-mark { width: 14px; height: 14px; margin-right: 4px; vertical-align: -3px; }
   .ops-mobile-nav button.active { color: #fff; background: linear-gradient(135deg, #B88339, #8A632C); }
   .ops-content { margin-top: 16px; }
   .ops-alert { margin-top: 12px; }
