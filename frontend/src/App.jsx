@@ -357,7 +357,7 @@ function WheelApp() {
 
           <img
             className="brand-logo welcome-brand-logo"
-            src="/armeria.png"
+            src="/bennys.png"
             alt="Armeria Paleto"
           />
 
@@ -475,7 +475,7 @@ function WheelApp() {
 
           <img
             className="brand-logo welcome-brand-logo"
-            src="/armeria.png"
+            src="/bennys.png"
             alt="Armeria Paleto"
           />
 
@@ -556,7 +556,7 @@ function WheelApp() {
 
               <img
                 className="brand-logo wheel-brand-logo"
-                src="/armeria.png"
+                src="/bennys.png"
                 alt="Armeria Paleto"
               />
 
@@ -654,7 +654,7 @@ function WheelApp() {
                     <div className="center-ring">
                       <img
                         className="center-logo"
-                        src="/armeria.png"
+                        src="/bennys.png"
                         alt=""
                         aria-hidden="true"
                         style={{
@@ -751,7 +751,7 @@ function WheelApp() {
 
             <img
               className="brand-logo result-brand-logo"
-              src="/armeria.png"
+              src="/bennys.png"
               alt="Armeria Paleto"
             />
 
@@ -1459,7 +1459,7 @@ function AdminPanel({ isAddUserPage = false }) {
         <section className="admin-login admin-loading-card">
           <img
             className="brand-logo admin-brand-logo"
-            src="/armeria.png"
+            src="/bennys.png"
             alt="Armeria Paleto"
           />
           <div className="admin-badge">AREA RISERVATA</div>
@@ -1485,7 +1485,7 @@ function AdminPanel({ isAddUserPage = false }) {
 
           <img
             className="brand-logo admin-brand-logo"
-            src="/armeria.png"
+            src="/bennys.png"
             alt="Armeria Paleto"
           />
 
@@ -1590,7 +1590,7 @@ function AdminPanel({ isAddUserPage = false }) {
         <section className="admin-login admin-user-card">
           <img
             className="brand-logo admin-brand-logo"
-            src="/armeria.png"
+            src="/bennys.png"
             alt="Armeria Paleto"
           />
 
@@ -1743,7 +1743,7 @@ function AdminPanel({ isAddUserPage = false }) {
 
             <img
               className="brand-logo admin-dashboard-logo"
-              src="/armeria.png"
+              src="/bennys.png"
               alt="Armeria Paleto"
             />
 

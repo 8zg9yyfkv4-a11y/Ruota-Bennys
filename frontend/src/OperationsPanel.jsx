@@ -313,7 +313,7 @@ export default function OperationsPanel({ apiUrl }) {
     return (
       <main className="ops-shell ops-centered">
         <div className="ops-login-card">
-          <img src="/armeria.png" alt="Los Santos Custom" />
+          <img src="/bennys.png" alt="Los Santos Custom" />
           <div className="ops-loader" />
           <p>Verifica della sessione operatore…</p>
         </div>
@@ -328,7 +328,7 @@ export default function OperationsPanel({ apiUrl }) {
         <div className="ops-orb ops-orb-two" />
         <section className="ops-login-card">
           <div className="ops-live-pill"><i /> AREA OPERATORI ARMERIA</div>
-          <img src="/armeria.png" alt="Los Santos Custom" />
+          <img src="/bennys.png" alt="Los Santos Custom" />
           <span className="ops-kicker">CONTROL ROOM</span>
           <h1>Ruota della <em>Fortuna</em></h1>
           <p>Accedi con il tuo account Discord. Il sistema riconosce automaticamente Proprietario, Direzione e operatori autorizzati.</p>
@@ -349,7 +349,7 @@ export default function OperationsPanel({ apiUrl }) {
       <div className="ops-orb ops-orb-two" />
       <aside className="ops-sidebar">
         <a className="ops-brand" href={`${wheelBase}/admin`}>
-          <img src="/armeria.png" alt="" />
+          <img src="/bennys.png" alt="" />
           <span><strong>Armeria</strong><small>Pannello Di Controllo</small></span>
         </a>
         <nav>
@@ -367,7 +367,7 @@ export default function OperationsPanel({ apiUrl }) {
 
       <section className="ops-workspace">
         <header className="ops-topbar">
-          <button className="ops-mobile-brand" onClick={() => setTab('sale')}><img src="/armeria.png" alt="ARMERIA" /></button>
+          <button className="ops-mobile-brand" onClick={() => setTab('sale')}><img src="/bennys.png" alt="ARMERIA" /></button>
           <div>
             <span className="ops-eyebrow">ARMERIA PALETO</span>
             <h1>{tab === 'sale' ? 'Nuova vendita' : tab === 'sales' ? 'Registro vendite' : tab === 'dashboard' ? 'Andamento attività' : tab === 'wheels' ? 'Ruote e premi' : 'Gestione operatori'}</h1>
