@@ -99,10 +99,10 @@ function App() {
     const robotsMeta = document.querySelector('meta[name="robots"]')
 
     if (isAdminPage) {
-      document.title = 'Amministrazione | Armeria Paleto'
+      document.title = "Amministrazione | Benny's"
       robotsMeta?.setAttribute('content', 'noindex, nofollow')
     } else {
-      document.title = 'Ruota della Fortuna | Armeria Paleto'
+      document.title = "Ruota della Fortuna | Benny's"
       robotsMeta?.setAttribute('content', 'index, follow')
     }
   }, [isAdminPage])
@@ -352,17 +352,17 @@ function WheelApp() {
 
           <div className="top-badge">
             <span className="badge-dot" />
-            ARMERIA • SISTEMA RUOTA DELLA FORTUNA
+            BENNY'S • SISTEMA RUOTA DELLA FORTUNA
           </div>
 
           <img
             className="brand-logo welcome-brand-logo"
-            src="/armeria.png"
-            alt="Armeria Paleto"
+            src="/bennys.png"
+            alt="Benny's"
           />
 
           <h1>
-            Benvenuto a ARMERIA
+            Benvenuto a BENNY'S
             <span>
               Ruota della Fortuna
             </span>
@@ -475,8 +475,8 @@ function WheelApp() {
 
           <img
             className="brand-logo welcome-brand-logo"
-            src="/armeria.png"
-            alt="Armeria Paleto"
+            src="/bennys.png"
+            alt="Benny's"
           />
 
           <h1>
@@ -556,8 +556,8 @@ function WheelApp() {
 
               <img
                 className="brand-logo wheel-brand-logo"
-                src="/armeria.png"
-                alt="Armeria Paleto"
+                src="/bennys.png"
+                alt="Benny's"
               />
 
               <div className="top-badge">
@@ -577,7 +577,7 @@ function WheelApp() {
             </div>
 
             <div className="wheel-status-strip" aria-hidden="true">
-              <span>ARMERIA FORTUNE DRIVE</span>
+              <span>BENNY'S FORTUNE DRIVE</span>
               <span className="wheel-system-status">
                 <i /> SYSTEM ONLINE
               </span>
@@ -595,7 +595,7 @@ function WheelApp() {
               <div className="wheel-led-ring" aria-hidden="true" />
 
               <div className="wheel-hud wheel-hud-left" aria-hidden="true">
-                <small>ARMERIA</small>
+                <small>BENNY'S</small>
                 <strong>01</strong>
               </div>
 
@@ -654,7 +654,7 @@ function WheelApp() {
                     <div className="center-ring">
                       <img
                         className="center-logo"
-                        src="/armeria.png"
+                        src="/bennys.png"
                         alt=""
                         aria-hidden="true"
                         style={{
@@ -751,8 +751,8 @@ function WheelApp() {
 
             <img
               className="brand-logo result-brand-logo"
-              src="/armeria.png"
-              alt="Armeria Paleto"
+              src="/bennys.png"
+              alt="Benny's"
             />
 
             <div className="result-badge">
@@ -816,7 +816,7 @@ function WheelApp() {
       <footer className="global-footer">
 
         <span>
-          ARMERIA PALETO
+          BENNY'S
         </span>
 
         <span className="footer-separator">
@@ -1459,8 +1459,8 @@ function AdminPanel({ isAddUserPage = false }) {
         <section className="admin-login admin-loading-card">
           <img
             className="brand-logo admin-brand-logo"
-            src="/armeria.png"
-            alt="Armeria Paleto"
+            src="/bennys.png"
+            alt="Benny's"
           />
           <div className="admin-badge">AREA RISERVATA</div>
           <h1>
@@ -1485,8 +1485,8 @@ function AdminPanel({ isAddUserPage = false }) {
 
           <img
             className="brand-logo admin-brand-logo"
-            src="/armeria.png"
-            alt="Armeria Paleto"
+            src="/bennys.png"
+            alt="Benny's"
           />
 
           <div className="admin-badge">
@@ -1566,7 +1566,7 @@ function AdminPanel({ isAddUserPage = false }) {
           </form>
 
           <div className="admin-login-footer">
-            ARMERIA PALETO
+            BENNY'S
           </div>
 
         </section>
@@ -1590,8 +1590,8 @@ function AdminPanel({ isAddUserPage = false }) {
         <section className="admin-login admin-user-card">
           <img
             className="brand-logo admin-brand-logo"
-            src="/armeria.png"
-            alt="Armeria Paleto"
+            src="/bennys.png"
+            alt="Benny's"
           />
 
           <div className="admin-badge">GESTIONE ACCESSI</div>
@@ -1743,8 +1743,8 @@ function AdminPanel({ isAddUserPage = false }) {
 
             <img
               className="brand-logo admin-dashboard-logo"
-              src="/armeria.png"
-              alt="Armeria Paleto"
+              src="/bennys.png"
+              alt="Benny's"
             />
 
             <div className="admin-badge">
@@ -1761,7 +1761,7 @@ function AdminPanel({ isAddUserPage = false }) {
             <p>
               Gestione codici e
               risultati delle
-              ruote ARMERIA.
+              ruote BENNY'S.
             </p>
 
           </div>
@@ -2241,7 +2241,7 @@ function AdminPanel({ isAddUserPage = false }) {
 
         <footer className="admin-footer">
 
-          ARMERIA PALETO
+          BENNY'S
 
           <span>
             •

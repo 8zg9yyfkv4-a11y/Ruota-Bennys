@@ -23,7 +23,7 @@ SSO_KEY=os.getenv('COMMAND_CENTER_SSO_KEY','')
 SESSION_SECRET=os.getenv('SESSION_SECRET') or secrets.token_urlsafe(48)
 # Only login sessions are ephemeral; accounting records remain in the bot DB.
 SESSIONS={}
-app=FastAPI(title='ARMERIA PALETO Gestionale',version='2.0.0')
+app=FastAPI(title="Benny's Gestionale",version='2.0.0')
 app.add_middleware(SessionMiddleware,secret_key=SESSION_SECRET,session_cookie='lsc_cc_v2',
  same_site='lax',https_only=PUBLIC_BASE_URL.startswith('https://'),max_age=43200)
 

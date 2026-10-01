@@ -16,7 +16,7 @@ from discord.ext import commands, tasks
 COMMAND_CENTER_URL = os.getenv("COMMAND_CENTER_URL", "").rstrip("/")
 COMMAND_CENTER_BRIDGE_KEY = os.getenv("COMMAND_CENTER_BRIDGE_KEY", "")
 BASE_DIR = Path(__file__).resolve().parents[2]
-DATABASE_PATH = Path(os.getenv("ARMERIA PALETO_DATABASE_PATH", BASE_DIR / "data" / "lsc_bot.sqlite3"))
+DATABASE_PATH = Path(os.getenv("BENNYS_DATABASE_PATH") or os.getenv("ARMERIA PALETO_DATABASE_PATH", BASE_DIR / "data" / "lsc_bot.sqlite3"))
 
 
 def _post(path: str, payload: dict[str, Any]) -> None:
@@ -30,7 +30,7 @@ def _post(path: str, payload: dict[str, Any]) -> None:
         headers={
             "Content-Type": "application/json",
             "X-ARMERIA PALETO-Bridge-Key": COMMAND_CENTER_BRIDGE_KEY,
-            "User-Agent": "ARMERIA PALETO-Bot-CommandCenterBridge/1.0",
+            "User-Agent": "Benny's-Bot-CommandCenterBridge/1.0",
         },
     )
     try:
@@ -46,7 +46,7 @@ async def post_bridge(path: str, payload: dict[str, Any]) -> None:
 
 
 class CommandCenterBridge(commands.Cog):
-    """Bridge non invasivo tra il bot ufficiale e ARMERIA PALETO Command Center."""
+    """Bridge non invasivo tra il bot ufficiale e Benny's Command Center."""
 
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
@@ -71,7 +71,7 @@ class CommandCenterBridge(commands.Cog):
                 "event": event,
                 "module": module,
                 "actor_id": str(actor.id) if actor else None,
-                "actor_name": actor_name or (getattr(actor, "display_name", None) if actor else None) or "ARMERIA PALETO Bot",
+                "actor_name": actor_name or (getattr(actor, "display_name", None) if actor else None) or "Benny's Bot",
                 "actor_role": actor_role,
                 "detail": detail or {},
             },

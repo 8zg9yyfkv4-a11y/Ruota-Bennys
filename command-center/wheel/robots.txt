@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ruota-armeria-paleto.onrender.com/sitemap.xml
-Sitemap: https://ruota-armeria-paleto.onrender.com/sitemap.txt
+Sitemap: https://ruota-bennys.onrender.com/sitemap.xml
+Sitemap: https://ruota-bennys.onrender.com/sitemap.txt
