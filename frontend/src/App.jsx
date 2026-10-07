@@ -93,7 +93,7 @@ function App() {
   const adminPath = window.location.pathname
     .toLowerCase()
     .replace(/\/$/, '')
-  const isAdminPage = adminPath.startsWith('/admin') || adminPath.startsWith('/ruota/admin')
+  const isAdminPage = adminPath.startsWith('/admin')
 
   useEffect(() => {
     const robotsMeta = document.querySelector('meta[name="robots"]')

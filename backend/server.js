@@ -16,7 +16,6 @@ const CLIENT_ORIGINS = String(process.env.CLIENT_ORIGIN || FRONTEND_URL)
   .split(',')
   .map((origin) => origin.trim().replace(/\/$/, ''))
   .filter(Boolean)
-if (process.env.COMMAND_CENTER_URL) CLIENT_ORIGINS.push(String(process.env.COMMAND_CENTER_URL).replace(/\/$/, ''))
 const DISCORD_CLIENT_ID = String(process.env.DISCORD_CLIENT_ID || '').trim()
 const DISCORD_CLIENT_SECRET = String(process.env.DISCORD_CLIENT_SECRET || '').trim()
 const DISCORD_BOT_TOKEN = String(process.env.DISCORD_BOT_TOKEN || '').trim()
@@ -360,14 +359,11 @@ app.get('/api/status', async (req, res) => {
   }
 })
 
-const ccAuth = require('./command-center-auth').createCommandCenterAuth({app, secret:process.env.COMMAND_CENTER_SSO_KEY, publicUrl:process.env.COMMAND_CENTER_URL})
-
 app.get('/api/auth/discord', (req, res) => {
   if (!DISCORD_CLIENT_ID || !DISCORD_CLIENT_SECRET) {
     return res.status(503).send('Login Discord non ancora configurato su Render.')
   }
-  const ccState = req.query.app === 'command-center' && ccAuth.enabled && /^[A-Za-z0-9_-]{32,128}$/.test(String(req.query.cc_state || '')) ? String(req.query.cc_state) : null
-  const signedState = signState((ccState ? `cc:${ccState}:` : '') + crypto.randomBytes(24).toString('hex'))
+  const signedState = signState(crypto.randomBytes(24).toString('hex'))
   res.setHeader('Set-Cookie', oauthCookie(signedState, 10 * 60 * 1000))
   const params = new URLSearchParams({
     client_id: DISCORD_CLIENT_ID,
@@ -423,21 +419,6 @@ app.get('/api/auth/discord/callback', async (req, res) => {
     const existing = await store.getOperator(discordId)
     const isAdmin = discordId === DISCORD_OWNER_ID || roles.includes(DISCORD_DIRECTION_ROLE_ID)
     const allowed = isAdmin || Boolean(existing?.active && existing.role === 'operator')
-    const ccState = state.startsWith('cc:') ? state.split(':')[1] : null
-    if (ccState && ccAuth.enabled) {
-      // Membership and exact bot permissions are independently checked by the
-      // Command Center bridge; this path never grants wheel operator access.
-      let wheelToken = null
-      if (allowed) {
-        const operator = await store.upsertOperator({discordId,username:discordUser.username,displayName:guildDisplayName,
-          avatar:discordUser.avatar ? `https://cdn.discordapp.com/avatars/${discordId}/${discordUser.avatar}.png` : null,
-          role:isAdmin ? 'admin' : 'operator',active:true,login:true})
-        wheelToken=crypto.randomBytes(48).toString('base64url')
-        await store.createSession({tokenHash:hashToken(wheelToken),discordId,user:publicUser(operator),
-          expiresAt:new Date(Date.now()+SESSION_DURATION_MS).toISOString()})
-      }
-      return ccAuth.complete(res,{id:discordId,state:ccState,wheel_token:wheelToken})
-    }
     if (!allowed) return res.redirect(`${FRONTEND_URL}/admin?auth=forbidden`)
 
     const avatar = discordUser.avatar
@@ -685,8 +666,6 @@ function groupKey(value, groupBy) {
   }
   return `${parts.year}-${String(parts.month).padStart(2, '0')}-${String(parts.day).padStart(2, '0')}`
 }
-
-require('./gestion-export').install(app, store)
 
 app.get('/api/analytics', requireSession, requireAdmin, async (req, res) => {
   const groupBy = ['day', 'week', 'month', 'year'].includes(req.query.groupBy) ? req.query.groupBy : 'day'
