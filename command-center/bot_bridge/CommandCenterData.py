@@ -21,12 +21,12 @@ BASE = Path(__file__).resolve().parent.parent
 LOG = logging.getLogger(__name__)
 GUILD = 1514541784628203581
 OWNER = 1514542225533698140
-DIRECTION = 1514542233842487426
+DIRECTION = int(os.getenv("DISCORD_DIRECTION_ROLE_ID") or 1243985250997108859)
 EMPLOYEE = 1514542241107148963
 GRADES = [("tirocinante",1532939006122262629),("meccanico",1514542237898379334),
           ("meccanico_esperto",1514542236933554256),("capo_officina",1514542235884982434),
           ("supervisore",1514542232042999878),("vice_direttore",1514542231133097994),
-          ("direttore",1514542230285844490),("gestore",1514542229405040640),("proprietario",OWNER)]
+          ("direttore",1243985250997108859),("gestore",1514542229405040640),("proprietario",OWNER)]
 MODULES = {
     "turni": ["work_shifts","work_breaks","manual_time_adjustments","time_clock_events"],
     "fatture": ["invoices","invoice_items","invoice_revisions"],
@@ -179,9 +179,11 @@ class CommandCenterData(commands.Cog):
         except Exception: raise web.HTTPForbidden()
         roles={r.id for r in member.roles}; owner=member.id==guild.owner_id or OWNER in roles
         direction=owner or DIRECTION in roles
-        if not (owner or EMPLOYEE in roles): raise web.HTTPForbidden()
+        # La Direzione entra senza il ruolo Dipendente: conta già come Direzione.
+        if not (direction or EMPLOYEE in roles): raise web.HTTPForbidden()
         grade=next((name for name,rid in reversed(GRADES) if rid in roles),"meccanico")
         if owner: grade="proprietario"
+        elif direction and not any(rid in roles for _,rid in GRADES): grade="direzione"
         modules=["dashboard","turni","fatture","deposito","classifica","ruota","documenti","ferie","richiami","stipendi","listino","tickets","profilo","guida"]
         if direction: modules += ["personale","contabilita","log","discord"]
         if owner: modules += ["control_room","archivio"]
